@@ -28,7 +28,7 @@ def secret_process(num_samples, intervention=None):
 
     # sample y
 
-    y = np.random.randint(low=1, high=6, size=num_samples)
+    y = np.random.randint(low=1, high=7, size=num_samples)
     y[z==1] *= 2
 
     if intervention and 'y' in intervention:
