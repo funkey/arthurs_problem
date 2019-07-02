@@ -55,6 +55,22 @@ def display_dataset(x,y,z):
 
     pl.show()
 
+
+
+    for z_value in [0, 1]:
+        values, counts = np.unique(y[z==z_value], return_counts = True)
+        fig = pl.figure(figsize = (10,15))
+        title = ('conditioned on z = %d and y' % z_value)
+        pl.suptitle(title)
+        for ind, y_value in enumerate(values):
+            print(y_value)
+            fig.add_subplot(3, 2, ind + 1)
+            pl.title(y_value)
+            pl.hist(x[np.logical_and(z==z_value,y == y_value)], bins = 100)
+        pl.show()
+
+
+
 if __name__ == "__main__":
 
     n = 10000
