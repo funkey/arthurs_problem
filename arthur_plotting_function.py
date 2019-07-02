@@ -36,6 +36,24 @@ def display_dataset(x,y,z):
     pl.bar(x = [0,1], height=[z_pos, z_neg])
     pl.show()
 
+    # p(x|z)
+
+    fig = pl.figure(figsize = (10,15))
+    title = 'conditioned on z'
+
+    for z_value in [0, 1]:
+
+        pl.suptitle(title)
+        fig.add_subplot(2, 2, 1 + 2*z_value)
+        pl.title('x')
+        pl.hist(x[z==z_value], bins = 100)
+
+        fig.add_subplot(2, 2, 2 + 2*z_value)
+        pl.title('y')
+        values, counts = np.unique(y[z==z_value], return_counts = True)
+        pl.bar(x = values, height=counts/np.sum(z==z_value))
+
+    pl.show()
 
 if __name__ == "__main__":
 
